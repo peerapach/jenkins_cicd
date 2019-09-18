@@ -62,7 +62,7 @@ pipelineJob('job_Pipeline_2') {
 pipelineJob('job_Pipeline_3') {
   definition {
     cps {
-      script(readFileFromWorkspace('file-seedjob-in-workspace.jenkinsfile'))
+      script(readFileFromWorkspace('pipelines/jenkinsfile1.groovy'))
       sandbox()     
     }
   }
