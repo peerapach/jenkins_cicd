@@ -15,7 +15,7 @@ pipelineJob('job_Pipeline_1') {
   def repo = 'https://github.com/peerapach/node-jx.git'
 
   triggers {
-    scm('H/5 * * * *')
+    scm('H/15 * * * *')
   }
   description("Pipeline for $repo")
 
@@ -25,7 +25,7 @@ pipelineJob('job_Pipeline_1') {
         git {
           remote { url(repo) }
           branches('master', '**/feature*')
-          scriptPath('misc/Jenkinsfile.v2')
+          scriptPath('misc/Jenkinsfile')
           extensions { }  // required as otherwise it may try to tag the repo, which you may not want
         }
       }
@@ -48,6 +48,7 @@ pipelineJob('job_Pipeline_2') {
                     stage('Stage 2') {
                         steps {
                             echo 'logic'
+                            echo 'add new step'
                         }
                     }
                 }
