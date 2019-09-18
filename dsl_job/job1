@@ -9,3 +9,61 @@ job('job-1') {
         gradle 'test'
     }
 }
+
+pipelineJob('job_Pipeline_1') {
+
+  def repo = 'https://github.com/peerapach/node-jx.git'
+
+  triggers {
+    scm('H/5 * * * *')
+  }
+  description("Pipeline for $repo")
+
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote { url(repo) }
+          branches('master', '**/feature*')
+          scriptPath('misc/Jenkinsfile.v2')
+          extensions { }  // required as otherwise it may try to tag the repo, which you may not want
+        }
+      }
+    }
+  }
+}
+
+pipelineJob('job_Pipeline_2') {
+  definition {
+    cps {
+      script('''
+        pipeline {
+            agent any
+                stages {
+                    stage('Stage 1') {
+                        steps {
+                            echo 'logic'
+                        }
+                    }
+                    stage('Stage 2') {
+                        steps {
+                            echo 'logic'
+                        }
+                    }
+                }
+            }
+        }
+      '''.stripIndent())
+      sandbox()     
+    }
+  }
+}
+
+pipelineJob('job_Pipeline_3') {
+  definition {
+    cps {
+      script(readFileFromWorkspace('file-seedjob-in-workspace.jenkinsfile'))
+      sandbox()     
+    }
+  }
+}
