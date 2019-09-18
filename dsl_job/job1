@@ -6,6 +6,6 @@ job('job-1') {
         scm('H/15 * * * *')
     }
     steps {
-        sh 'yarn build'
+        gradle 'test'
     }
 }
