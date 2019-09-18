@@ -1,0 +1,11 @@
+job('job-1') {
+    scm {
+        git('git://github.com/peerapach/node-jx.git')
+    }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        sh 'yarn build'
+    }
+}
