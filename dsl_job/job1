@@ -60,7 +60,7 @@ pipelineJob('job_Pipeline_2') {
   }
 }
 
-pipelineJob('job_Pipeline_3') {
+pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod') {
   definition {
     cps {
       script(readFileFromWorkspace('pipelines/jenkinsfile1.groovy'))
