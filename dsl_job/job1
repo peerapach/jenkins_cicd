@@ -60,7 +60,7 @@ pipelineJob('job_Pipeline_2') {
   }
 }
 
-folder('PROD') {
+folder('/01-FRONTEND/PROD') {
     displayName('PROD')
     description('Folder for PROD')
 }
