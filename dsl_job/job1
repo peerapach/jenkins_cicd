@@ -90,7 +90,7 @@ pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod_2') {
   }
 }
 
-
+// need sectionedView plugin
 sectionedView('project-summary') {
     filterBuildQueue()
     filterExecutors()
@@ -130,7 +130,8 @@ sectionedView('project-summary') {
     }
 }
 
-nestedView('project-a') {
+//need nested plugin
+nestedView('project-a') { 
     views {
         listView('overview') {
             jobs {
@@ -147,5 +148,30 @@ nestedView('project-a') {
         buildPipelineView('pipeline') {
             selectedJob('project-a-compile')
         }
+    }
+}
+
+
+listView('project-A') {
+    description('All unstable jobs for project A')
+    filterBuildQueue()
+    filterExecutors()
+    jobs {
+        name('release-projectA')
+        regex(/01-FRONTEND/PROD/Pipeline_frontend_.+/)
+    }
+    jobFilters {
+        status {
+            status(Status.UNSTABLE)
+        }
+    }
+    columns {
+        status()
+        weather()
+        name()
+        lastSuccess()
+        lastFailure()
+        lastDuration()
+        buildButton()
     }
 }
