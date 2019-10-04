@@ -60,6 +60,11 @@ pipelineJob('job_Pipeline_2') {
   }
 }
 
+folder('PROD') {
+    displayName('PROD')
+    description('Folder for PROD')
+}
+
 pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod') {
   definition {
     cps {
