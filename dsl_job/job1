@@ -152,13 +152,13 @@ nestedView('project-a') {
 }
 
 
-listView('project-A') {
+listView('/01-FRONTEND/PROD/project-A') {
     description('All unstable jobs for project A')
     filterBuildQueue()
     filterExecutors()
     jobs {
         name('release-projectA')
-        regex(/01-FRONTEND/PROD/Pipeline_frontend_.+/)
+        regex(/Pipeline_frontend_.+/)
     }
     jobFilters {
         status {
