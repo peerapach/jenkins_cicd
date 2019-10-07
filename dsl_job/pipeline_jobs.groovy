@@ -1,3 +1,13 @@
+folder('01-BACKEND') {
+    displayName('Backend')
+    description('Folder for Backend PROD')
+}
+
+folder('01-FRONTEND') {
+    displayName('Frontend')
+    description('Folder for frontend')
+}
+
 folder('01-BACKEND/PROD') {
     displayName('PROD')
     description('Folder for Backend PROD')
