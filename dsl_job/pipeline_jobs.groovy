@@ -69,6 +69,9 @@ pipelineJob('01-BACKEND/PROD/job_Pipeline_prod') {
 }
 
 pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod') {
+  parameters {
+    stringParam('myParameterName', 'my default stringParam value', 'my description')
+  }
   definition {
     cps {
       script(readFileFromWorkspace('pipelines/jenkinsfile1.groovy'))
@@ -79,6 +82,9 @@ pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod') {
 
 pipelineJob('/01-FRONTEND/PROD/Pipeline_frontend_prod_2') {
   def repo = 'https://github.com/peerapach/node-jx.git'
+  parameters {
+    stringParam('myParameterName', 'my default stringParam value', 'my description')
+  }    
   definition {
     cpsScm {
       scm {
